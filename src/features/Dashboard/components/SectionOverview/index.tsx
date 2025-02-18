@@ -182,7 +182,7 @@ export default function SectionOverview() {
               </Flex>
             </Flex>
             <Flex w={{ base: '100%', xl: '36%', '2xl': '36%' }} justifyContent="center" mt={{ base: 4, md: 0 }}>
-              <Flex borderX="1px solid #E6C066" px={4} borderRadius="md">
+              <Flex borderX="1px solid #E6C066" direction={{ base: 'column', md: 'row' }} px={4} borderRadius="md">
                 <Text fontSize={{ base: 'md', md: 'lg' }} p="2">
                   <strong>Your Balance</strong>
                 </Text>

@@ -11,8 +11,11 @@ import { encodeStr } from '@/utils/common'
 import { useAppStore } from '@/store/useAppStore'
 import { useTranslation } from 'react-i18next'
 import solwalletStyles from './solwallet.module.css'
+import { useRouter } from 'next/router'
 
 const SolWallet: React.FC = () => {
+  const router = useRouter()
+  const currentPath = router.pathname
   const { wallets, select, disconnect, connected, connecting, wallet } = useWallet()
   const { t } = useTranslation()
   const publicKey = useAppStore((s) => s.publicKey)
@@ -62,17 +65,25 @@ const SolWallet: React.FC = () => {
       </>
     )
   return (
-    <Flex w="full" justifyContent="flex-end">
+    <Flex w="full" justifyContent={currentPath !== '/dashboard' ? 'end' : { base: 'end', md: 'space-between' }}>
+      {currentPath === '/dashboard' ? (
+        <Text display={{ base: 'none', md: 'block' }} textAlign="center" fontSize="2xl" textColor="#E6C066">
+          DASHBOARD
+        </Text>
+      ) : (
+        ''
+      )}
+
       <Flex placeItems="center" gap={2}>
-        <Image src="/images/wallet/1.png" alt="img" w={8} h={8} />
-        <Image src="/images/wallet/2.png" alt="img" w={8} h={8} />
+        <Image src="/images/wallet/1.png" alt="img" w={{ base: '6', md: '8' }} />
+        <Image src="/images/wallet/2.png" alt="img" w={{ base: '6', md: '8' }} />
         <Button
           isLoading={connecting}
           loadingText="Connecting.."
           onClick={handleOpen}
           variant="outline"
           border="1px"
-          fontSize="lg"
+          fontSize={{ base: 'md', md: 'lg' }}
           borderRadius="sm"
           borderColor="#E6C066"
         >
