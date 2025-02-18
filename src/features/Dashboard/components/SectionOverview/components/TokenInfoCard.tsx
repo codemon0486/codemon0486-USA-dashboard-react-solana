@@ -111,7 +111,7 @@ export default function TokenInfoCard({
 
   const currentAsset = tab === assetsCategoryOptions[0].value ? parsePoolAssets : parseTokenAssets
   return (
-    <Box>
+    <Box w="full">
       {/* <Box>
         <Box
           bg={colors.backgroundHead}
@@ -151,7 +151,7 @@ export default function TokenInfoCard({
         // {...panelCard}
         direction="column"
         flex={4}
-        minW="320px"
+        minW="1/3"
         minH="260px"
         marginTop="-24px"
         scrollSnapAlign={'start'}
@@ -181,6 +181,7 @@ export default function TokenInfoCard({
           borderBottom={`1px solid ${color}`}
           borderRadius="lg"
           bg={colors.backgroundHead}
+          w="full"
         >
           {/* {connected ? ( */}
           <Box

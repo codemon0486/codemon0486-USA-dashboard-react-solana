@@ -1,8 +1,9 @@
 // mobile <48em -- laptop 48~90em -- big-desktop >90em
 export const breakpoints = {
-  sm: '48em',
-  md: '90em',
-  lg: '90em',
-  xl: '90em',
-  '2xl': '90em'
+  base: '0em', // 0px
+  sm: '30em', // ~480px
+  md: '48em', // ~768px
+  lg: '62em', // ~992px
+  xl: '80em', // ~1280px
+  '2xl': '96em' // ~1536px
 }

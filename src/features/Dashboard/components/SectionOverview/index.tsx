@@ -136,7 +136,6 @@ export default function SectionOverview() {
 
   const contractAddress = 'GAYCVRGZH2tHmsIc5sCprE2JEbuz8tJ9ZxCNJX1CkWWR'
   const { hasCopied, onCopy } = useClipboard(contractAddress)
-
   return (
     <>
       <Box className="dashboardWrapper">
@@ -152,10 +151,11 @@ export default function SectionOverview() {
           fontFamily="monospace"
           my={10}
           mb="20"
+          w="full"
         >
-          <Flex>
-            <Flex direction="column" color="white" gap={2} pr="8" w="66%">
-              <Flex justifyContent="space-between">
+          <Flex w="full" direction={{ base: 'column', xl: 'row', '2xl': 'row' }}>
+            <Flex direction="column" color="white" gap={2} w={{ base: '100%', xl: '64%', '2xl': '64%' }}>
+              <Flex justifyContent="space-between" flexWrap="wrap">
                 <Text fontSize="lg" borderLeft="1px solid #E6C066" p="2" borderRadius="md">
                   <strong>Name:</strong> <span style={{ color: '#E6C066' }}>Official USA Token</span>
                 </Text>
@@ -168,22 +168,24 @@ export default function SectionOverview() {
               </Flex>
               <Flex borderTop="1px solid #E6C066" justifyContent="center" borderRadius="lg" px="4" py="2" alignItems="center">
                 <Text fontSize="lg">
-                  <strong style={{ padding: '0px 20px' }}>CA:</strong> {contractAddress}
+                  <strong>CA:</strong> {contractAddress}
                 </Text>
-                <Image src="/images/dashboard/copy.png" alt="copy" w={12} px={4} />
+                <Image src="/images/dashboard/copy.png" alt="copy" w={12} px={4} onClick={onCopy} cursor="pointer" />
               </Flex>
             </Flex>
-            <Flex borderX="1px solid #E6C066" px={4} borderRadius="md">
-              <Text fontSize="lg" p="2">
-                <strong>Your Balance</strong>
-              </Text>
-              <Flex h="full" alignItems="center ">
-                <Text fontSize={26} px="2" textColor="blue" pl="2">
-                  ▲
+            <Flex w={{ base: '100%', xl: '36%', '2xl': '36%' }} justifyContent="center" mt={{ base: 4, md: 0 }}>
+              <Flex borderX="1px solid #E6C066" px={4} borderRadius="md">
+                <Text fontSize="lg" p="2">
+                  <strong>Your Balance</strong>
                 </Text>
-                <Text textColor="#E6C066" fontSize="54px">
-                  $3777
-                </Text>
+                <Flex h="full" alignItems="center">
+                  <Text fontSize={26} px="2" textColor="blue" pl="2">
+                    ▲
+                  </Text>
+                  <Text textColor="#E6C066" fontSize="42px">
+                    $3777
+                  </Text>
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
@@ -194,7 +196,7 @@ export default function SectionOverview() {
           )}
         </Box>
 
-        <Flex justifyContent="space-between" gap={[3, 6]} mb={14} px={[5, 0]}>
+        <Flex className="simplegrid" gap={[3, 6]} mx={[-5, 0]} mb={10} px={[5, 0]}>
           <TokenInfoCard cardTitle={title1} cardValue="Token Price" color="#2B1BBF" />
           <TokenInfoCard cardTitle={title3} cardImg={TotalsupplyImg} cardValue="FDV" color="#BF1B2C" />
           <TokenInfoCard cardTitle={title4} cardImg={LiquidityImg} cardValue="Liquidity" color="#2B1BBF" />
