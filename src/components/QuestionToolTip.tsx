@@ -15,7 +15,7 @@ export function QuestionToolTip(props: {
   /** @default 'question' */
   iconType?: 'question' | 'info'
   // iconSize?: string
-  iconProps?: SvgIcon
+  iconProps?: React.ComponentProps<typeof InfoCircleIcon> | React.ComponentProps<typeof QuestionCircleIcon>
 }) {
   return (
     <Tooltip
@@ -27,10 +27,8 @@ export function QuestionToolTip(props: {
     >
       <Box cursor={props.label ? 'pointer' : undefined}>
         {props.iconType === 'info' ? (
-          // @ts-expect-error don't why this error
           <InfoCircleIcon style={{ display: 'block' }} {...props.iconProps} />
         ) : (
-          // @ts-expect-error don't why this error
           <QuestionCircleIcon style={{ display: 'block' }} {...props.iconProps} />
         )}
       </Box>
