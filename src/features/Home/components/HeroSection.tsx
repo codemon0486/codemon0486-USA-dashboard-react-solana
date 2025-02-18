@@ -5,7 +5,7 @@ function HeroSection() {
   return (
     <Flex justifyContent="space-around" mt="10">
       <Box>
-        <Text fontSize="2xl" textAlign="start" lineHeight="6">
+        <Text fontSize={{ base: 'md', xl: '2xl', '2xl': '2xl' }} textAlign="start" lineHeight="6">
           short description textshort description <br /> textshort description textshort description <br />
           textshort description textshort description <br /> text short description textshort <br /> description textshort description
           textshort <br /> description textshort description textshort <br /> description textshort description textshort <br /> description
@@ -17,7 +17,7 @@ function HeroSection() {
           </Text>
         </Box>
       </Box>
-      <Image src="/images/home/main.png" alt="main" w="44%" />
+      <Image src="/images/home/main.png" alt="main" w={{ base: '40%', xl: '44%', '2xl': '44%' }} />
     </Flex>
   )
 }
