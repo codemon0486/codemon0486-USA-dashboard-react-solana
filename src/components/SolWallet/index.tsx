@@ -12,11 +12,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { useTranslation } from 'react-i18next'
 import solwalletStyles from './solwallet.module.css'
 
-interface SolWalletProps {
-  title: string
-}
-
-const SolWallet: React.FC<SolWalletProps> = ({ title }) => {
+const SolWallet: React.FC = () => {
   const { wallets, select, disconnect, connected, connecting, wallet } = useWallet()
   const { t } = useTranslation()
   const publicKey = useAppStore((s) => s.publicKey)
@@ -66,10 +62,7 @@ const SolWallet: React.FC<SolWalletProps> = ({ title }) => {
       </>
     )
   return (
-    <Flex w="full" justifyContent="space-between">
-      <Text textColor="#E6C066" fontSize="3xl">
-        {title}
-      </Text>
+    <Flex w="full" justifyContent="flex-end">
       <Flex placeItems="center" gap={2}>
         <Image src="/images/wallet/1.png" alt="img" w={8} h={8} />
         <Image src="/images/wallet/2.png" alt="img" w={8} h={8} />
