@@ -1,8 +1,19 @@
 import { Box, Text, Grid, Button, Image, VStack, HStack, Flex } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
 const Footer = () => {
+  const router = useRouter()
+  const currentPath = router.pathname
   return (
-    <Box borderTop="1px solid #E6C066" mt="20" p={6} color="white" fontFamily="monospace" w="100%">
+    <Box
+      borderTop={{ base: '', lg: '1px solid #E6C066' }}
+      display={currentPath === '/dashboard' && { base: 'block', lg: 'none' }}
+      mt="20"
+      p={6}
+      color="white"
+      fontFamily="monospace"
+      w="100%"
+    >
       <Flex gap={20}>
         <Box borderRight="1px solid #E6C066" borderRadius="md" pr={6}>
           <VStack align="start" spacing={3}>

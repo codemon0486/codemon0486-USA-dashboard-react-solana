@@ -65,9 +65,16 @@ const SolWallet: React.FC = () => {
       </>
     )
   return (
-    <Flex w="full" justifyContent={currentPath !== '/dashboard' ? 'end' : { base: 'end', md: 'space-between' }}>
+    <Flex w="full" justifyContent={currentPath !== '/dashboard' ? 'end' : { base: 'end', lg: 'space-between' }}>
       {currentPath === '/dashboard' ? (
-        <Text display={{ base: 'none', md: 'block' }} textAlign="center" fontSize="2xl" textColor="#E6C066">
+        <Text
+          p={1}
+          display={{ base: 'none', lg: 'block' }}
+          fontFamily={'Digital Cards Demo'}
+          textAlign="center"
+          fontSize="20px"
+          textColor="#E6C066"
+        >
           DASHBOARD
         </Text>
       ) : (
@@ -90,6 +97,7 @@ const SolWallet: React.FC = () => {
           {t('button.connect_wallet')}
         </Button>
       </Flex>
+
       <SelectWalletModal wallets={wallets} isOpen={visible} onClose={handleClose} onSelectWallet={handleSelectWallet} />
     </Flex>
   )
