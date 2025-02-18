@@ -144,6 +144,7 @@ function AppNavLayout({
         background="#1A1A1A"
         zIndex={10}
         borderRight="1px solid #E6C066"
+        display={{ base: 'none', lg: 'block' }}
       >
         {/* logo */}
         <Desktop>
