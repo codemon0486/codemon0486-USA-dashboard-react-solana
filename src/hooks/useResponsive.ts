@@ -11,7 +11,7 @@ const useResponsive = (): ResponsiveState => {
   const [isClient, setIsClient] = useState(false)
 
   const isMobile = useBreakpointValue({ base: true, sm: false }) || false
-  const isTablet = useBreakpointValue({ sm: true, md: false }) || false
+  const isTablet = useBreakpointValue({ sm: true, lg: false }) || false
   const isDesktop = useBreakpointValue({ lg: true }) || false
 
   useEffect(() => {

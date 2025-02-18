@@ -166,7 +166,7 @@ function AppNavLayout({
             </Text>
           </Box>
         </Desktop>
-        {/* <Mobile>
+        <Mobile>
           <HStack>
             <RaydiumLogoOutline />
             <Text fontSize="xl" fontWeight="medium" color={colors.textSecondary}>
@@ -183,7 +183,7 @@ function AppNavLayout({
                 : ''}
             </Text>
           </HStack>
-        </Mobile> */}
+        </Mobile>
 
         {/* nav routes */}
         <Desktop>
