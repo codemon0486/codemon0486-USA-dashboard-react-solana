@@ -23,7 +23,7 @@ export default function Dashboard() {
   return (
     <Box overflowX="hidden">
       <HStack className="hWalletBtn" justify="end">
-        <SolWallet />
+        <SolWallet title="DASHBOARD" />
       </HStack>
       <VStack>
         <PageHeroImg />

@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Box, Button, HStack, Text, Image, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, HStack, Text, Image, useDisclosure, Flex } from '@chakra-ui/react'
 import { Wallet, useWallet } from '@solana/wallet-adapter-react'
 import { useWalletModal } from '@solana/wallet-adapter-react-ui'
 import { useEvent } from '@/hooks/useEvent'
@@ -12,7 +12,11 @@ import { useAppStore } from '@/store/useAppStore'
 import { useTranslation } from 'react-i18next'
 import solwalletStyles from './solwallet.module.css'
 
-export default function SolWallet() {
+interface SolWalletProps {
+  title: string
+}
+
+const SolWallet: React.FC<SolWalletProps> = ({ title }) => {
   const { wallets, select, disconnect, connected, connecting, wallet } = useWallet()
   const { t } = useTranslation()
   const publicKey = useAppStore((s) => s.publicKey)
@@ -62,24 +66,28 @@ export default function SolWallet() {
       </>
     )
   return (
-    <Box>
-      <Button
-        isLoading={connecting}
-        loadingText="Connecting.."
-        onClick={handleOpen}
-        // style={{
-        //   background: 'rgb(7, 8, 11)',
-        //   border: '2px solid rgb(130, 46, 218)',
-        //   color: 'white',
-        //   borderRadius: '100px',
-        //   fontSize: '16px',
-        //   padding: '0px 12px'
-        // }}
-        variant={'solid'}
-      >
-        {t('button.connect_wallet')}
-      </Button>
+    <Flex w="full" justifyContent="space-between">
+      <Text textColor="#E6C066" fontSize="3xl">
+        {title}
+      </Text>
+      <Flex placeItems="center" gap={2}>
+        <Image src="/images/wallet/1.png" alt="img" w={8} h={8} />
+        <Image src="/images/wallet/2.png" alt="img" w={8} h={8} />
+        <Button
+          isLoading={connecting}
+          loadingText="Connecting.."
+          onClick={handleOpen}
+          variant="outline"
+          border="1px"
+          fontSize="lg"
+          borderRadius="sm"
+          borderColor="#E6C066"
+        >
+          {t('button.connect_wallet')}
+        </Button>
+      </Flex>
       <SelectWalletModal wallets={wallets} isOpen={visible} onClose={handleClose} onSelectWallet={handleSelectWallet} />
-    </Box>
+    </Flex>
   )
 }
+export default SolWallet
