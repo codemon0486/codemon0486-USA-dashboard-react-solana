@@ -10,6 +10,7 @@ import { Desktop } from '@/components/MobileDesktop'
 import { AcceleraytorAlertChip } from './AcceleraytorAlertChip'
 import PageHeroImg from '@/components/PageHeroImg'
 import SolWallet from '@/components/SolWallet'
+import Footer from '@/components/Footer/index'
 
 export type DashboardPageQuery = {
   section?: 'overview' | 'my-positions' | 'my-created-farm' | 'acceleraytor'
@@ -26,7 +27,14 @@ export default function Dashboard() {
         <SolWallet />
       </HStack>
       <VStack>
-        <Text display={{ base: 'block', md: 'none' }} textAlign="center" pt="16" pb="6" fontSize="2xl" textColor="#E6C066">
+        <Text
+          p={2}
+          display={{ base: 'block', lg: 'none' }}
+          fontFamily={'Digital Cards Demo'}
+          textAlign="center"
+          fontSize="2xl"
+          textColor="#E6C066"
+        >
           DASHBOARD
         </Text>
         <PageHeroImg />
@@ -38,6 +46,7 @@ export default function Dashboard() {
       <SectionMyCreatedFarms />
       <SectionAcceleraytor /> */}
       <Box pb={'40px'} />
+      <Footer />
     </Box>
   )
 }

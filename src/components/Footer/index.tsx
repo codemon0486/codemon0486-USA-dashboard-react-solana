@@ -1,8 +1,15 @@
 import { Box, Text, Grid, Button, Image, VStack, HStack, Flex } from '@chakra-ui/react'
+<<<<<<< HEAD
 import { FileText } from 'react-feather'
+=======
+import { useRouter } from 'next/router'
+>>>>>>> bdcf1ae528637435ee545ffdbebd3823cdbfc297
 
 const Footer = () => {
+  const router = useRouter()
+  const currentPath = router.pathname
   return (
+<<<<<<< HEAD
     <Box borderTop={{ base: '0px', md: '1px solid #E6C066' }} mt="20" p={6} color="white" fontFamily="monospace" w="100%">
       <Flex gap={6} direction={{ base: 'column', md: 'row' }} justifyContent="space-around">
         <Box
@@ -14,6 +21,21 @@ const Footer = () => {
         >
           <VStack w="full" spacing={5}>
             <Flex direction="column" justifyContent="space-around" fontSize="md" lineHeight="1.8">
+=======
+    <Box
+      borderTop={{ base: '', lg: '1px solid #E6C066' }}
+      display={currentPath === '/dashboard' && { base: 'block', lg: 'none' }}
+      mt="20"
+      p={6}
+      color="white"
+      fontFamily="monospace"
+      w="100%"
+    >
+      <Flex gap={20}>
+        <Box borderRight="1px solid #E6C066" borderRadius="md" pr={6}>
+          <VStack align="start" spacing={3}>
+            <Box lineHeight="1.8" w="full">
+>>>>>>> bdcf1ae528637435ee545ffdbebd3823cdbfc297
               <Flex>
                 <Text w="50%">Max Supply:</Text>
                 <Text as="span">900,000,000</Text>
