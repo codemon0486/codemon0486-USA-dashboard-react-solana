@@ -187,7 +187,7 @@ export default function SectionOverview() {
                   <strong>Your Balance</strong>
                 </Text>
                 <Flex h="full" alignItems="center">
-                  <Text fontSize={26} px="2" textColor="blue" pl="2">
+                  <Text fontSize={26} px="2" textColor="#2B1BBF">
                     ▲
                   </Text>
                   <Text textColor="#E6C066" fontSize={{ base: '32px ', md: '36px' }}>
