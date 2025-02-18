@@ -149,7 +149,7 @@ function AppNavLayout({
       >
         {/* logo */}
         <Desktop>
-          <Box flex={'none'}>
+          <Box>
             <Link href="/dashboard">
               <RaydiumLogo />
             </Link>

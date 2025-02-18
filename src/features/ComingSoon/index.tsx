@@ -17,7 +17,7 @@ export default function Comingsoon() {
   return (
     <Box overflowX="hidden">
       <HStack justify="end">
-        <SolWallet />
+        <SolWallet title="" />
       </HStack>
       <VStack>
         <PageHeroImg />
