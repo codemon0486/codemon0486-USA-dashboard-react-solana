@@ -20,11 +20,12 @@ import {
   ModalOverlay,
   Text,
   Image,
-  useColorMode
+  useColorMode,
+  Button
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { ReactNode, useRef } from 'react'
+import React, { ReactNode, useRef, useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 import MobileDesktop, { Desktop, Mobile } from '../MobileDesktop'
 import SolWallet from '../SolWallet'
@@ -94,6 +95,8 @@ function AppNavLayout({
     }
   }
 
+  const [toggle, setToggle] = useState<boolean>(false)
+
   const fadeIn = keyframes`
   from { transform: translateY(-100%); }
   to { transform: translateY(0); }
@@ -139,33 +142,34 @@ function AppNavLayout({
         flex="none"
         // px={['20px', '38px']}
         alignItems="center"
-        // display={'none'}
         justifyContent="space-between"
         flexDirection="column"
         background="#1A1A1A"
+        position={{ base: 'fixed', lg: 'relative' }}
+        bg={{ base: '#1e1e1ed4', lg: 'none' }}
+        filter={{ base: 'blur(0px)', lg: 'blur(0px)' }}
         zIndex={10}
         borderRight="1px solid #E6C066"
-        display={{ base: 'none', lg: 'block' }}
+        display={toggle ? 'block' : { base: 'none', lg: 'block' }}
       >
         {/* logo */}
-        <Desktop>
-          <Box>
-            <Link href="/dashboard">
-              <RaydiumLogo />
-            </Link>
-            <Text
-              fontSize="lg"
-              rounded="md"
-              p="6px 50px"
-              background="#171717"
-              borderBottom="1px solid #E6C066"
-              textAlign="center"
-              textColor="#E6C066"
-            >
-              $ 0.004077
-            </Text>
-          </Box>
-        </Desktop>
+        <Box px={8}>
+          <Link href="/dashboard" style={{ display: 'flex', justifyContent: 'center' }}>
+            <RaydiumLogo />
+          </Link>
+          <Text
+            fontSize="lg"
+            rounded="md"
+            py={1}
+            background="#171717"
+            borderBottom="1px solid #E6C066"
+            textAlign="center"
+            textColor="#E6C066"
+            fontFamily={'Konexy Personal Use'}
+          >
+            $ 0.004077
+          </Text>
+        </Box>
         {/* <Mobile>
           <HStack>
             <RaydiumLogoOutline />
@@ -186,109 +190,136 @@ function AppNavLayout({
         </Mobile> */}
 
         {/* nav routes */}
-        <Desktop>
-          <Flex mt="8">
-            <Box px="2">
-              <Image src="/images/sidebar/bar.png" h="83%" />
-            </Box>
-            <HStack flexGrow={1} flexDirection="column" justify="start" overflow={['auto', 'visible']} gap={2} width={'100%'} pt="4" pb="2">
-              <RouteLink href="/" isActive={pathname === '/'}>
-                <SidebarHomeIcon colorMode={colorMode} isActive={isHomeActive} />
-                {t('Home')}
-              </RouteLink>
+        <Flex mt="8" p={2}>
+          <Box px="2">
+            <Image src="/images/sidebar/bar.png" h="83%" />
+          </Box>
+          <HStack
+            flexGrow={1}
+            flexDirection="column"
+            justify="start"
+            overflow={['auto', 'visible']}
+            gap={2}
+            width={'100%'}
+            pt="4"
+            pb="2"
+            fontFamily={'Konexy Personal Use'}
+          >
+            <RouteLink href="/" isActive={pathname === '/'}>
+              <SidebarHomeIcon colorMode={colorMode} isActive={isHomeActive} />
+              {t('Home')}
+            </RouteLink>
 
-              <RouteLink href="/dashboard" isActive={pathname === '/dashboard'}>
-                <PortfolioPageThumbnailIcon colorMode={colorMode} isActive={isDashboardActive} />
-                {t('dashboard.title')}
-              </RouteLink>
-              {/* <RouteLink href="/comingsoon" isActive={pathname === '/comingsoon'}>
+            <RouteLink href="/dashboard" isActive={pathname === '/dashboard'}>
+              <PortfolioPageThumbnailIcon colorMode={colorMode} isActive={isDashboardActive} />
+              {t('dashboard.title')}
+            </RouteLink>
+            {/* <RouteLink href="/comingsoon" isActive={pathname === '/comingsoon'}>
               <SwapPageThumbnailIcon colorMode={colorMode} isActive={isSwapActive} />
               {t('swap.title')}
             </RouteLink> */}
-              {/* <RouteLink href="/liquidity-pools" isActive={pathname.includes('/liquidity')}>
+            {/* <RouteLink href="/liquidity-pools" isActive={pathname.includes('/liquidity')}>
               {t('liquidity.title')}
             </RouteLink> */}
-              {/* <RouteLink href="/portfolio" isActive={pathname === '/portfolio'}>
+            {/* <RouteLink href="/portfolio" isActive={pathname === '/portfolio'}>
               {t('portfolio.title')}
             </RouteLink> */}
-              <RouteLink href="/trade" isActive={pathname === '/trade'}>
-                <SidebarTradeIcon colorMode={colorMode} isActive={isTradeActive} />
-                {t('Trade')}
-              </RouteLink>
+            <RouteLink href="/trade" isActive={pathname === '/trade'}>
+              <SidebarTradeIcon colorMode={colorMode} isActive={isTradeActive} />
+              {t('Trade')}
+            </RouteLink>
 
-              <RouteLink href="/staking" isActive={pathname === '/staking'}>
-                <SidebarStakingIcon colorMode={colorMode} isActive={isStakingActive} />
-                {t('Staking')}
-              </RouteLink>
+            <RouteLink href="/staking" isActive={pathname === '/staking'}>
+              <SidebarStakingIcon colorMode={colorMode} isActive={isStakingActive} />
+              {t('Staking')}
+            </RouteLink>
 
-              <RouteLink href="/farms" isActive={pathname === '/farms'}>
-                <SidebarFarmsIcon colorMode={colorMode} isActive={isFarmsActive} />
-                {t('Farms')}
-              </RouteLink>
+            <RouteLink href="/farms" isActive={pathname === '/farms'}>
+              <SidebarFarmsIcon colorMode={colorMode} isActive={isFarmsActive} />
+              {t('Farms')}
+            </RouteLink>
 
-              <RouteLink href="/pools" isActive={pathname === '/pools'}>
-                <SidebarPoolsIcon colorMode={colorMode} isActive={isPoolsActive} />
-                {t('Pools')}
-              </RouteLink>
+            <RouteLink href="/pools" isActive={pathname === '/pools'}>
+              <SidebarPoolsIcon colorMode={colorMode} isActive={isPoolsActive} />
+              {t('Pools')}
+            </RouteLink>
 
-              <RouteLink href="/ilo" isActive={pathname === '/ilo'}>
-                <SidebarIloIcon colorMode={colorMode} isActive={isIloActive} />
-                {t('ILO')}
-              </RouteLink>
+            <RouteLink href="/ilo" isActive={pathname === '/ilo'}>
+              <SidebarIloIcon colorMode={colorMode} isActive={isIloActive} />
+              {t('ILO')}
+            </RouteLink>
 
-              <RouteLink href="/nft" isActive={pathname === '/nft'}>
-                <SidebarNFTIcon colorMode={colorMode} isActive={isNFTActive} />
-                {t('NFT')}
-              </RouteLink>
+            <RouteLink href="/nft" isActive={pathname === '/nft'}>
+              <SidebarNFTIcon colorMode={colorMode} isActive={isNFTActive} />
+              {t('NFT')}
+            </RouteLink>
 
-              <Flex backgroundColor="#E6C066" padding="1" mt={5} rounded="sm" placeItems="center" justifyContent="center" w="full" gap={3}>
-                <Text fontSize="2xl" textColor="black" fontWeight={900}>
-                  CHART
-                </Text>
-                <Image src="/images/sidebar/chart1.png" alt="chart" w={6}></Image>
-                <Image src="/images/sidebar/chart2.png" alt="chart" w={6}></Image>
-              </Flex>
-              <Flex gap={2} my="6">
-                <Image src="/images/sidebar/telegram.png" w={10}></Image>
-                <Image src="/images/sidebar/tiktok.png" w={10}></Image>
-                <Image src="/images/sidebar/x.png" w={10}></Image>
-              </Flex>
+            <Flex backgroundColor="#E6C066" padding="1" mt={5} rounded="sm" placeItems="center" justifyContent="center" w="full" gap={3}>
+              <Text fontSize="2xl" textColor="black" fontWeight={900} color={'#191919'}>
+                CHART
+              </Text>
+              <Image src="/images/sidebar/chart1.png" alt="chart" w={6}></Image>
+              <Image src="/images/sidebar/chart2.png" alt="chart" w={6}></Image>
+            </Flex>
+            <Flex gap={2} my="6">
+              <Image src="/images/sidebar/telegram.png" w={10}></Image>
+              <Image src="/images/sidebar/tiktok.png" w={10}></Image>
+              <Image src="/images/sidebar/x.png" w={10}></Image>
+            </Flex>
 
-              {/* <RouteLink href="/vault" isActive={pathname === '/vault'}>
+            {/* <RouteLink href="/vault" isActive={pathname === '/vault'}>
               {t('common.vault')}
             </RouteLink>
             <RouteLink href="/sender" isActive={pathname === '/sender'}>
               {t('common.sender')}
             </RouteLink> */}
 
-              {/* <RouteLink href="/" isActive={pathname === '/docs'}>
+            {/* <RouteLink href="/" isActive={pathname === '/docs'}>
               {t('common.docs')}
             </RouteLink>
             <RouteLink href="/" isActive={pathname === '/support'}>
               {t('common.support')}
             </RouteLink> */}
-              {/* <RouteLink href="/playground" isActive={pathname === '/playground'}>
+            {/* <RouteLink href="/playground" isActive={pathname === '/playground'}>
               {t('common.playground')}
             </RouteLink> */}
-              {/* <Flex className="moreTab" width={'100%'} style={{ paddingLeft: '28px' }}>
+            {/* <Flex className="moreTab" width={'100%'} style={{ paddingLeft: '28px' }}>
               <Menu size="lg">
                 <MenuButton className="menuBtn" fontSize={'lg'} py={2}> */}
-              {/* <Flex align="center" gap={0.5} color={pathname === '/staking' ? colors.textSecondary : colors.textTertiary}> */}
-              {/* <Flex align="center" gap={0.5} color={colors.textTertiary}> */}
-              {/* {pathname === '/staking' ? t('staking.title') : t('common.more')} */}
-              {/* <MorePageThumbnailIcon colorMode={colorMode} /> */}
-              {/* {t('common.more')} */}
-              {/* <ChevronDownIcon width={16} height={16} /> */}
-              {/* </Flex>
+            {/* <Flex align="center" gap={0.5} color={pathname === '/staking' ? colors.textSecondary : colors.textTertiary}> */}
+            {/* <Flex align="center" gap={0.5} color={colors.textTertiary}> */}
+            {/* {pathname === '/staking' ? t('staking.title') : t('common.more')} */}
+            {/* <MorePageThumbnailIcon colorMode={colorMode} /> */}
+            {/* {t('common.more')} */}
+            {/* <ChevronDownIcon width={16} height={16} /> */}
+            {/* </Flex>
                 </MenuButton>
                 <NavMoreButtonMenuPanel />
               </Menu>
             </Flex> */}
-            </HStack>
-          </Flex>
-        </Desktop>
+          </HStack>
+        </Flex>
 
         {/* wallet button */}
+        <Flex className="vWalletBtn" position={'absolute'} right={4} top={5} justifyContent="center">
+          {/* <PriorityButton />
+          <SettingsMenu />
+          <div
+            style={{
+              border: '2px solid #822eda',
+              borderRadius: '24px',
+              padding: '2px',
+              width: '32px !important',
+              height: '32px !important '
+            }}
+          >
+            <img src={SolanaImg.src} style={{ width: '24px !important', height: '24px !important' }} />
+          </div>
+          {!isMobile && <ColorThemeSettingFieldCustom />}
+          <VersionedTransactionSwitch /> */}
+          {/* <SolWallet title="" /> */}
+          <Image src="/images/close.png" display={{ base: 'block', lg: 'none' }} cursor={'pointer'} onClick={() => setToggle(false)} />
+        </Flex>
       </HStack>
       {/* <Box
         w="full"
@@ -306,6 +337,7 @@ function AppNavLayout({
         overflow={overflowHidden ? 'hidden' : 'auto'}
         overflowX={'hidden'}
         display="flex"
+        position={'relative'}
         flexDirection="column"
         justifyItems={'flex-start'}
         sx={{
@@ -317,6 +349,16 @@ function AppNavLayout({
           }
         }}
       >
+        {!toggle && (
+          <Image
+            display={{ base: 'block', lg: 'none' }}
+            src="/images/open.png"
+            cursor={'pointer'}
+            position={'absolute'}
+            onClick={() => setToggle(true)}
+          />
+        )}
+
         {children}
       </Box>
       {/* <DisclaimerModal /> */}
@@ -350,40 +392,27 @@ function AppNavLayout({
 
 function RouteLink(props: { isActive?: boolean; children: ReactNode; href: string }) {
   return (
-    <MobileDesktop
-      pc={
-        <Link href={props.href} style={{ display: 'flex', justifyContent: 'left', width: '100%' }}>
-          <Text
-            as="span"
-            textColor={props.isActive ? colors.textTertiary : colors.textWhite}
-            fontSize="xl"
-            px={10}
-            py={2}
-            transition="200ms"
-            _hover={{ bg: '#060737', color: colors.textSecondary }}
-            _active={{ bg: 'yellow', color: colors.textSecondary }}
-            _selected={{ bg: 'yellow', color: colors.textSecondary }}
-            _valid={{ bg: 'yellow' }}
-            _visited={{ bg: 'yellow' }}
-            _focus={{ bg: 'yellow' }}
-            display="flex"
-            alignItems="center"
-            width={'100%'}
-          >
-            {props.children}
-          </Text>
-        </Link>
-      }
-      mobile={
-        props.isActive ? (
-          <Link href={props.href}>
-            <Text as="span" fontSize="xl" fontWeight={500} textColor={colors.textSecondary}>
-              {props.children}
-            </Text>
-          </Link>
-        ) : null
-      }
-    />
+    <Link href={props.href} style={{ display: 'flex', justifyContent: 'left', width: '100%' }}>
+      <Text
+        as="span"
+        textColor={props.isActive ? colors.textTertiary : colors.textWhite}
+        fontSize="lg"
+        px={10}
+        py={2}
+        transition="200ms"
+        _hover={{ bg: '#060737', color: colors.textSecondary }}
+        _active={{ bg: 'yellow', color: colors.textSecondary }}
+        _selected={{ bg: 'yellow', color: colors.textSecondary }}
+        _valid={{ bg: 'yellow' }}
+        _visited={{ bg: 'yellow' }}
+        _focus={{ bg: 'yellow' }}
+        display="flex"
+        alignItems="center"
+        width={'100%'}
+      >
+        {props.children}
+      </Text>
+    </Link>
   )
 }
 
