@@ -6,6 +6,26 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: Digital Cards Demo;
+  src: url(../public/fonts/Digital\ Cards\ Demo.ttf);
+}
+
+@font-face {
+  font-family: AMCAP Eternal;
+  src: url(../public/fonts/AMCAP\ Eternal.ttf);
+}
+
+@font-face {
+  font-family: Alexandria;
+  src: url(../public/fonts/Alexandria-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Konexy Personal Use;
+  src: url(../public/fonts/KonexyPersonalUse.otf);
+}
+
 .mainLayout {
   display: flex;
   flex-direction: row;
@@ -57,7 +77,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .hWalletBtn {
     display: none !important;
   }
@@ -73,7 +93,7 @@
   .vWalletBtn {
     display: none !important;
   }
-}
+} */
 
 .infoCard {
   /* min-height: 256px; */

@@ -1,4 +1,4 @@
-import { Box, HStack, Skeleton, VStack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Skeleton, Switch, Text, VStack } from '@chakra-ui/react'
 
 import PageHeroTitle from '@/components/PageHeroTitle'
 import useFetchStakePools from '@/hooks/pool/useFetchStakePools'
@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next'
 import StakingPoolItem from './components/StakingPoolItem'
 import SolWallet from '@/components/SolWallet'
 import PageHeroImg from '@/components/PageHeroImg'
+import StakeNft from './components/StakeNft'
+import { useState } from 'react'
+import Button from '@/components/Button'
+import StakeUsa from './components/StakeUsa'
 
 export type StakingPageQuery = {
   dialog?: 'unstake' | 'stake'
@@ -17,6 +21,7 @@ export default function Staking() {
   const { t } = useTranslation()
   const { activeStakePools, isLoading } = useFetchStakePools({})
   const { lpBasedData } = useFarmPositions({})
+  const [isNft, setIsNft] = useState<boolean>(true)
 
   return (
     <Box>
@@ -24,21 +29,45 @@ export default function Staking() {
         <PageHeroTitle title={t('staking.title')} description={t('staking.staking_desc') || ''} />
       </Box> */}
       <HStack className="hWalletBtn" justify="end">
-        <SolWallet title="" />
+        <SolWallet />
       </HStack>
-      <VStack>
-        <PageHeroImg />
-        {/* <PageHeroTitle title={t('dashboard.hero_title')} /> */}
+      <VStack position={'relative'}>
+        <Text fontWeight={400} position={'absolute'} left={'10px'} fontFamily={'Digital Cards Demo'} fontSize={20} color={'#E6C066'}>
+          STAKING
+        </Text>
+        <Flex mt={10} rounded={'full'} bg={'#1b1b1b'} gap={-1}>
+          <Button
+            zIndex={!isNft ? 1 : 0}
+            bg={!isNft ? '#BF1B2C' : '#1b1b1b'}
+            _hover={{ bg: !isNft ? '#971624' : '#1b1b1b' }}
+            color={!isNft ? '#ffffff' : '#ffffff80'}
+            rounded={'full'}
+            onClick={() => setIsNft(false)}
+          >
+            <Text fontFamily={'AMCAP Eternal'}>STAKEUSA</Text>
+          </Button>
+          <Button
+            zIndex={isNft ? 1 : 0}
+            ml={-2}
+            bg={isNft ? '#BF1B2C' : '#1b1b1b'}
+            _hover={{ bg: isNft ? '#971624' : '#1b1b1b' }}
+            color={isNft ? '#ffffff' : '#ffffff80'}
+            rounded={'full'}
+            onClick={() => setIsNft(true)}
+          >
+            <Text fontFamily={'AMCAP Eternal'}>STAKENFT</Text>
+          </Button>
+        </Flex>
       </VStack>
       {isLoading ? (
         // <Skeleton width="80%" height="20px" />
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <img src="/images/pendulum.gif" alt="" />
         </div>
+      ) : isNft ? (
+        <StakeNft />
       ) : (
-        activeStakePools.map((pool, index) => (
-          <StakingPoolItem key={pool.id} pid={index} pool={pool} apiVaultData={lpBasedData.get(pool?.lpMint.address || '')} />
-        ))
+        <StakeUsa />
       )}
     </Box>
   )

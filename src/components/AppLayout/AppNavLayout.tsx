@@ -139,6 +139,7 @@ function AppNavLayout({
         flex="none"
         // px={['20px', '38px']}
         alignItems="center"
+        // display={'none'}
         justifyContent="space-between"
         flexDirection="column"
         background="#1A1A1A"
@@ -288,24 +289,6 @@ function AppNavLayout({
         </Desktop>
 
         {/* wallet button */}
-        <Flex className="vWalletBtn" align="center" style={{ padding: '30px' }}>
-          {/* <PriorityButton />
-          <SettingsMenu />
-          <div
-            style={{
-              border: '2px solid #822eda',
-              borderRadius: '24px',
-              padding: '2px',
-              width: '32px !important',
-              height: '32px !important '
-            }}
-          >
-            <img src={SolanaImg.src} style={{ width: '24px !important', height: '24px !important' }} />
-          </div>
-          {!isMobile && <ColorThemeSettingFieldCustom />}
-          <VersionedTransactionSwitch /> */}
-          <SolWallet title="" />
-        </Flex>
       </HStack>
       {/* <Box
         w="full"
