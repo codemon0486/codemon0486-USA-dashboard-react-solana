@@ -4,7 +4,7 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } fro
 
 import { useAppStore } from '@/store'
 import { colors } from '@/theme/cssVariables'
-import ChartTooltip from './ChartTooltip'
+// import ChartTooltip from './ChartTooltip'
 import { useTranslation } from 'react-i18next'
 
 export default function Chart<T = any>({
@@ -72,7 +72,7 @@ export default function Chart<T = any>({
                 )}
                 {/* <YAxis tickFormatter={yTickformats} /> */}
                 <Bar dataKey={yKey} fill={colors.chart03} radius={200} maxBarSize={7} />
-                <Tooltip content={<ChartTooltip category={currentCategoryLabel} />} cursor={{ fill: 'transparent' }} />
+                {/* <Tooltip content={<ChartTooltip category={currentCategoryLabel} />} cursor={{ fill: 'transparent' }} /> */}
               </BarChart>
             </ResponsiveContainer>
           </Box>

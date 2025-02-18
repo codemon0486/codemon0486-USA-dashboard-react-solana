@@ -1,7 +1,5 @@
 import { Box } from '@chakra-ui/react'
 import { TooltipProps } from 'recharts'
-import { NameType, ValueType } from 'recharts/src/component/DefaultTooltipContent'
-
 import { toUTC } from '@/utils/date'
 import { formatCurrency } from '@/utils/numberish/formatter'
 import { colors } from '@/theme/cssVariables'
