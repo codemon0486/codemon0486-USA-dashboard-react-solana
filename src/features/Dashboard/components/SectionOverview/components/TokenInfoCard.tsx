@@ -198,7 +198,13 @@ export default function TokenInfoCard({
                 {cardImg ? <img src={cardImg?.src} width="40px" alt="card" /> : ''}
               </GridItem>
 
-              <GridItem area={'total'} placeItems="center" justifySelf={['center', 'unset']} fontSize={{ base: 'lg', md: '2xl' }}>
+              <GridItem
+                fontFamily="Konexy Personal Use"
+                area={'total'}
+                placeItems="center"
+                justifySelf={['center', 'unset']}
+                fontSize={{ base: 'sm', md: 'md' }}
+              >
                 {/* <AssetsTotal total={currentAsset.summary.toString()} /> */}
                 {cardValue}
               </GridItem>

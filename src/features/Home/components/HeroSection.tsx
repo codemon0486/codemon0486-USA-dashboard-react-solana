@@ -1,5 +1,6 @@
 import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-feather'
 
 function HeroSection() {
   return (
@@ -11,14 +12,29 @@ function HeroSection() {
       mt="10"
     >
       <Box>
-        <Text fontSize={{ base: 'sm', md: 'md', lg: 'xl' }} textAlign="start" lineHeight="6">
+        <Text fontSize={{ base: 'sm', md: 'md', lg: 'xl' }} fontFamily="Konexy Personal Use" textAlign="start" lineHeight="6">
           short description textshort description textshort description textshort description textshort description textshort description
           text short description textshort description textshort description textshort description textshort description textshort
           description textshort description textshort description textshort description textshort description text
         </Text>
-        <Box w={{ base: '40', xl: '48', '2xl': '48' }} my="10" borderRadius="sm" bg="#222222" borderX="2px solid #E6C066">
-          <Text textAlign="center" py="2" fontSize={{ base: 'md', lg: 'md', xl: '2xl', '2xl': '2xl' }}>
-            Trade Now
+        <Box
+          w={{ base: '40', xl: '48', '2xl': '48' }}
+          my="10"
+          textAlign="center"
+          py={2}
+          borderRadius="sm"
+          bg="#222222"
+          borderX="2px solid #E6C066"
+        >
+          <Text
+            textAlign="center"
+            as="a"
+            href="/staking"
+            fontFamily="Konexy Personal Use"
+            py="2"
+            fontSize={{ base: 'md', lg: 'md', xl: 'lg' }}
+          >
+            Staking Now
           </Text>
         </Box>
       </Box>

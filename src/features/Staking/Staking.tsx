@@ -32,7 +32,15 @@ export default function Staking() {
         <SolWallet />
       </HStack>
       <VStack position={'relative'}>
-        <Text fontWeight={400} position={'absolute'} left={'10px'} fontFamily={'Digital Cards Demo'} fontSize={20} color={'#E6C066'}>
+        <Text
+          fontWeight={400}
+          display={{ base: 'none', md: 'block' }}
+          position={'absolute'}
+          left={'10px'}
+          fontFamily={'Digital Cards Demo'}
+          fontSize={20}
+          color={'#E6C066'}
+        >
           STAKING
         </Text>
         <Flex mt={10} rounded={'full'} bg={'#1b1b1b'} gap={-1}>

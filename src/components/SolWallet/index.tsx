@@ -72,7 +72,7 @@ const SolWallet: React.FC = () => {
           display={{ base: 'none', lg: 'block' }}
           fontFamily={'Digital Cards Demo'}
           textAlign="center"
-          fontSize="20px"
+          fontSize="18px"
           textColor="#E6C066"
         >
           DASHBOARD
@@ -90,9 +90,10 @@ const SolWallet: React.FC = () => {
           onClick={handleOpen}
           variant="outline"
           border="1px"
-          fontSize={{ base: 'md', md: 'lg' }}
+          fontSize={{ base: 'sm', md: 'sm' }}
           borderRadius="sm"
           borderColor="#E6C066"
+          fontFamily="ALTRONED Trial"
         >
           {t('button.connect_wallet')}
         </Button>

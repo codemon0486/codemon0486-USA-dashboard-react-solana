@@ -26,6 +26,11 @@
   src: url(../public/fonts/KonexyPersonalUse.otf);
 }
 
+@font-face {
+  font-family: ALTRONED Trial;
+  src: url(../public/fonts/ALTRONEDTrial.ttf);
+}
+
 .mainLayout {
   display: flex;
   flex-direction: row;

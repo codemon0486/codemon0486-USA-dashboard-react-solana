@@ -13,7 +13,7 @@ const StatusSection: React.FC<StatusSectionProps> = ({ farms, title }) => {
   return (
     <Box>
       <Flex>
-        <Text fontWeight="bold" fontSize="xl" color="#E6C066">
+        <Text fontFamily="Konexy Personal Use" fontSize="xl" color="#E6C066">
           {title}
         </Text>
         <Text fontSize="xl" px={2}>
@@ -28,15 +28,14 @@ const StatusSection: React.FC<StatusSectionProps> = ({ farms, title }) => {
               key={index}
               py={6}
               px={3}
-              fontSize={{ base: '6px', sm: 'xs', md: 'lg' }}
+              fontSize={{ base: '6px', sm: '6px', md: 'md' }}
               borderRight="1px solid #E6C066"
               textAlign="center"
               w="100%"
+              fontFamily="Konexy Personal Use"
             >
-              <Text fontWeight="bold" color="white">
-                {farm.name}
-              </Text>
-              <Text fontWeight="bold">{farm.apr}</Text>
+              <Text color="white">{farm.name}</Text>
+              <Text>{farm.apr}</Text>
               <Text>APR</Text>
             </Box>
           ))}

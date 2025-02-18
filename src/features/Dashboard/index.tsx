@@ -10,7 +10,7 @@ import { Desktop } from '@/components/MobileDesktop'
 import { AcceleraytorAlertChip } from './AcceleraytorAlertChip'
 import PageHeroImg from '@/components/PageHeroImg'
 import SolWallet from '@/components/SolWallet'
-import Footer from '@/components/Footer/index'
+import Footer from '@/components/Footer'
 
 export type DashboardPageQuery = {
   section?: 'overview' | 'my-positions' | 'my-created-farm' | 'acceleraytor'
@@ -28,11 +28,12 @@ export default function Dashboard() {
       </HStack>
       <VStack>
         <Text
-          p={2}
           display={{ base: 'block', lg: 'none' }}
-          fontFamily={'Digital Cards Demo'}
           textAlign="center"
-          fontSize="2xl"
+          pt="16"
+          pb="6"
+          fontSize={{ base: '12px', sm: '20px' }}
+          fontFamily="Digital Cards Demo"
           textColor="#E6C066"
         >
           DASHBOARD

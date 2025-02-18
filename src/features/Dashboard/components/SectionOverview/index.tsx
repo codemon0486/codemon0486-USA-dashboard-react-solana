@@ -154,16 +154,16 @@ export default function SectionOverview() {
           w="full"
         >
           <Flex w="full" direction={{ base: 'column', xl: 'row', '2xl': 'row' }}>
-            <Flex direction="column" color="white" gap={2} w={{ base: '100%', xl: '64%', '2xl': '64%' }}>
-              <Flex justifyContent="space-between" flexWrap="wrap" fontSize={{ base: 'xs', sm: 'md', md: 'lg' }}>
+            <Flex direction="column" fontFamily="Konexy Personal Use" color="white" gap={2} w={{ base: '100%', xl: '64%', '2xl': '64%' }}>
+              <Flex justifyContent="space-between" flexWrap="wrap" fontSize={{ base: '8px', sm: '8px', md: 'xs' }}>
                 <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
-                  <strong>Name:</strong> <span style={{ color: '#E6C066' }}>Official USA Token</span>
+                  Name: <span style={{ color: '#E6C066' }}>Official USA Token</span>
                 </Text>
                 <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
-                  <strong>Symbol:</strong> <span style={{ color: '#E6C066' }}>$USA</span>
+                  Symbol: <span style={{ color: '#E6C066' }}>$USA</span>
                 </Text>
                 <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
-                  <strong>Decimals:</strong> <span style={{ color: '#E6C066' }}>9</span>
+                  Decimals: <span style={{ color: '#E6C066' }}>9</span>
                 </Text>
               </Flex>
               <Flex
@@ -175,22 +175,26 @@ export default function SectionOverview() {
                 py="2"
                 alignItems="center"
               >
-                <Text fontSize={{ base: '8px', sm: 'xs', md: 'lg' }}>
-                  <strong>CA:</strong> {contractAddress}
-                </Text>
+                <Text fontSize={{ base: '6px', sm: '6px', md: 'xs' }}>CA: {contractAddress}</Text>
                 <Image src="/images/dashboard/copy.png" alt="copy" w={12} px={4} onClick={onCopy} cursor="pointer" />
               </Flex>
             </Flex>
             <Flex w={{ base: '100%', xl: '36%', '2xl': '36%' }} justifyContent="center" mt={{ base: 4, md: 0 }}>
-              <Flex borderX="1px solid #E6C066" direction={{ base: 'column', md: 'row' }} px={4} borderRadius="md">
-                <Text fontSize={{ base: 'md', md: 'lg' }} p="2">
-                  <strong>Your Balance</strong>
+              <Flex
+                fontFamily="Konexy Personal Use"
+                borderX="1px solid #E6C066"
+                direction={{ base: 'column', md: 'row' }}
+                px={4}
+                borderRadius="md"
+              >
+                <Text fontSize={{ base: 'xs', md: 'sm' }} p="2">
+                  Your Balance
                 </Text>
                 <Flex h="full" alignItems="center">
                   <Text fontSize={26} px="2" textColor="#2B1BBF">
                     ▲
                   </Text>
-                  <Text textColor="#E6C066" fontSize={{ base: '32px ', md: '36px' }}>
+                  <Text textColor="#E6C066" fontSize={{ base: '26px ', md: '30px' }}>
                     $3777
                   </Text>
                 </Flex>

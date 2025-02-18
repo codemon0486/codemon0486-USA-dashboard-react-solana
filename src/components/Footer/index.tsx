@@ -1,16 +1,21 @@
-import { Box, Text, Grid, Button, Image, VStack, HStack, Flex } from '@chakra-ui/react'
-<<<<<<< HEAD
-import { FileText } from 'react-feather'
-=======
+import { Box, Text, Image, VStack, HStack, Flex } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
->>>>>>> bdcf1ae528637435ee545ffdbebd3823cdbfc297
 
 const Footer = () => {
   const router = useRouter()
   const currentPath = router.pathname
+  console.log('current:', currentPath)
+
   return (
-<<<<<<< HEAD
-    <Box borderTop={{ base: '0px', md: '1px solid #E6C066' }} mt="20" p={6} color="white" fontFamily="monospace" w="100%">
+    <Box
+      borderTop={{ base: '', md: '1px solid #E6C066' }}
+      display={currentPath === '/dashboard' ? { base: 'block', lg: 'none' } : ''}
+      mt="20"
+      p={6}
+      color="white"
+      fontFamily="monospace"
+      w="100%"
+    >
       <Flex gap={6} direction={{ base: 'column', md: 'row' }} justifyContent="space-around">
         <Box
           borderRight={{ base: '0px', md: '1px solid #E6C066' }}
@@ -20,22 +25,13 @@ const Footer = () => {
           pr={6}
         >
           <VStack w="full" spacing={5}>
-            <Flex direction="column" justifyContent="space-around" fontSize="md" lineHeight="1.8">
-=======
-    <Box
-      borderTop={{ base: '', lg: '1px solid #E6C066' }}
-      display={currentPath === '/dashboard' && { base: 'block', lg: 'none' }}
-      mt="20"
-      p={6}
-      color="white"
-      fontFamily="monospace"
-      w="100%"
-    >
-      <Flex gap={20}>
-        <Box borderRight="1px solid #E6C066" borderRadius="md" pr={6}>
-          <VStack align="start" spacing={3}>
-            <Box lineHeight="1.8" w="full">
->>>>>>> bdcf1ae528637435ee545ffdbebd3823cdbfc297
+            <Flex
+              fontSize={{ base: 'xs', lg: 'sm' }}
+              fontFamily="Konexy Personal Use"
+              direction="column"
+              justifyContent="space-around"
+              lineHeight="1.8"
+            >
               <Flex>
                 <Text w="50%">Max Supply:</Text>
                 <Text as="span">900,000,000</Text>
@@ -62,28 +58,34 @@ const Footer = () => {
                 BUY
               </Text>
               <Image src="/images/token-logo.png" alt="USA Token" boxSize="24px" />
-              <Text>$ 0.004077</Text>
+              <Text fontFamily="Konexy Personal Use">$ 0.004077</Text>
             </HStack>
           </VStack>
         </Box>
         <Flex w="100%" justifyContent="space-around" flexWrap={{ base: 'wrap', sm: 'nowrap' }}>
           <VStack align="start">
             <Box lineHeight="1.5">
-              <Text fontWeight="bold" fontSize={{ base: 'md', sm: 'lg' }}>
+              <Text fontFamily="AMCAP Eternal" fontSize={{ base: 'md', sm: 'lg' }}>
                 ABOUT
               </Text>
-              <Text>Info</Text>
-              <Text>Docs</Text>
-              <Text>USA Token</Text>
+              <Text fontFamily="Konexy Personal Use" fontSize={{ base: 'xs', lg: 'sm' }}>
+                Info
+              </Text>
+              <Text fontFamily="Konexy Personal Use" fontSize={{ base: 'xs', lg: 'sm' }}>
+                Docs
+              </Text>
+              <Text fontFamily="Konexy Personal Use" fontSize={{ base: 'xs', lg: 'sm' }}>
+                USA Token
+              </Text>
             </Box>
           </VStack>
           <VStack align="start">
-            <Text fontWeight="bold" fontSize={{ base: 'md', sm: 'lg' }}>
+            <Text fontFamily="AMCAP Eternal" fontSize={{ base: 'md', sm: 'lg' }}>
               SERVICES
             </Text>
           </VStack>
           <VStack align="center" w={{ base: '100%', sm: 'auto' }}>
-            <Text fontWeight="bold" textAlign="center" fontSize={{ base: 'lg', sm: 'xl' }}>
+            <Text fontFamily="AMCAP Eternal" textAlign="center" fontSize={{ base: 'md', sm: 'lg' }}>
               COMMUNITY
             </Text>
             <HStack spacing={3}>
