@@ -19,7 +19,7 @@ export default function Home() {
         <PageHeroTitle title={t('staking.title')} description={t('staking.staking_desc') || ''} />
       </Box> */}
       <HStack className="hWalletBtn" justify="end">
-        <SolWallet title="" />
+        <SolWallet />
       </HStack>
       <VStack>
         <HeadImages />

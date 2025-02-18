@@ -155,19 +155,27 @@ export default function SectionOverview() {
         >
           <Flex w="full" direction={{ base: 'column', xl: 'row', '2xl': 'row' }}>
             <Flex direction="column" color="white" gap={2} w={{ base: '100%', xl: '64%', '2xl': '64%' }}>
-              <Flex justifyContent="space-between" flexWrap="wrap">
-                <Text fontSize="lg" borderLeft="1px solid #E6C066" p="2" borderRadius="md">
+              <Flex justifyContent="space-between" flexWrap="wrap" fontSize={{ base: 'xs', sm: 'md', md: 'lg' }}>
+                <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
                   <strong>Name:</strong> <span style={{ color: '#E6C066' }}>Official USA Token</span>
                 </Text>
-                <Text fontSize="lg" borderLeft="1px solid #E6C066" p="2" borderRadius="md">
+                <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
                   <strong>Symbol:</strong> <span style={{ color: '#E6C066' }}>$USA</span>
                 </Text>
-                <Text fontSize="lg" borderLeft="1px solid #E6C066" p="2" borderRadius="md">
+                <Text borderLeft="1px solid #E6C066" my={2} p="2" borderRadius="md">
                   <strong>Decimals:</strong> <span style={{ color: '#E6C066' }}>9</span>
                 </Text>
               </Flex>
-              <Flex borderTop="1px solid #E6C066" justifyContent="center" borderRadius="lg" px="4" py="2" alignItems="center">
-                <Text fontSize="lg">
+              <Flex
+                borderTop={{ base: '0px', md: '1px solid #E6C066' }}
+                borderLeft={{ base: '1px solid #E6C066', md: '0px' }}
+                justifyContent={{ base: 'start', md: 'center' }}
+                borderRadius="lg"
+                px="2"
+                py="2"
+                alignItems="center"
+              >
+                <Text fontSize={{ base: '8px', sm: 'xs', md: 'lg' }}>
                   <strong>CA:</strong> {contractAddress}
                 </Text>
                 <Image src="/images/dashboard/copy.png" alt="copy" w={12} px={4} onClick={onCopy} cursor="pointer" />
@@ -175,14 +183,14 @@ export default function SectionOverview() {
             </Flex>
             <Flex w={{ base: '100%', xl: '36%', '2xl': '36%' }} justifyContent="center" mt={{ base: 4, md: 0 }}>
               <Flex borderX="1px solid #E6C066" px={4} borderRadius="md">
-                <Text fontSize="lg" p="2">
+                <Text fontSize={{ base: 'md', md: 'lg' }} p="2">
                   <strong>Your Balance</strong>
                 </Text>
                 <Flex h="full" alignItems="center">
                   <Text fontSize={26} px="2" textColor="blue" pl="2">
                     ▲
                   </Text>
-                  <Text textColor="#E6C066" fontSize="42px">
+                  <Text textColor="#E6C066" fontSize={{ base: '32px ', md: '36px' }}>
                     $3777
                   </Text>
                 </Flex>
@@ -209,24 +217,28 @@ export default function SectionOverview() {
 
         <Box bg="#222" borderY="1px solid #E6C066" mt={14} p={6} borderRadius="md" color="white" fontFamily="monospace" width="100%">
           <Flex gap={6}>
-            <Text fontWeight="bold" fontSize="xl" color="#E6C066" mb={2}>
+            <Text fontWeight="bold" fontSize={{ base: 'md', sm: 'xl' }} color="#E6C066" mb={2}>
               Portfolio
             </Text>
 
             <Tabs variant="unstyled">
-              <TabList bg="white" w="14rem" borderRadius="md" pr="2" justifyContent="space-around">
-                <Tab borderRadius="md" px={4} fontWeight="bold">
+              <TabList bg="white" w={{ base: '10rem', sm: '14rem' }} borderRadius="md" justifyContent="space-around">
+                <Tab fontSize={{ base: '6px', sm: 'xs' }} borderRadius="md" px={4} fontWeight="bold">
                   <Text bg="#E6C066" borderRadius="sm" px="2">
                     TOTAL
                   </Text>
                 </Tab>
-                <Tab color="#E6C066">USA</Tab>
-                <Tab color="#E6C066">USA/SOL</Tab>
+                <Tab fontSize={{ base: '10px', sm: 'sm' }} color="#E6C066">
+                  USA
+                </Tab>
+                <Tab fontSize={{ base: '10px', sm: 'xs' }} color="#E6C066">
+                  USA/SOL
+                </Tab>
               </TabList>
             </Tabs>
           </Flex>
 
-          <Text fontSize="2xl" color="#E6C066" mt={4}>
+          <Text color="#E6C066" fontSize={{ base: 'xl', md: '2xl' }} mt={4}>
             $00.00
           </Text>
           <Box w="full">
@@ -235,7 +247,7 @@ export default function SectionOverview() {
                 <Image src="/images/dashboard/line.png" w="90%" />
               </Box>
               <Box>
-                <Image src="/images/dashboard/button.png" alt="button" w="80%" />
+                <Image src="/images/dashboard/button.png" alt="button" w={{ base: '100%', sm: '80%' }} />
               </Box>
             </Flex>
           </Box>

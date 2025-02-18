@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Box, HStack, VStack } from '@chakra-ui/react'
+import { Box, HStack, VStack, Text } from '@chakra-ui/react'
 import PageHeroTitle from '@/components/PageHeroTitle'
 import SectionMyCreatedFarms, { CreateFarmTabValues } from './components/SectionMyFarms'
 import SectionMyPositions from './components/SectionMyPositions'
@@ -26,6 +26,9 @@ export default function Dashboard() {
         <SolWallet />
       </HStack>
       <VStack>
+        <Text display={{ base: 'block', md: 'none' }} textAlign="center" pt="16" pb="6" fontSize="2xl" textColor="#E6C066">
+          DASHBOARD
+        </Text>
         <PageHeroImg />
         {/* <PageHeroTitle title={t('dashboard.hero_title')} /> */}
       </VStack>
