@@ -194,7 +194,7 @@ export default function TokenInfoCard({
             <Flex placeItems="center" h="14">
               <GridItem area={'pie'} pr={2}>
                 {/* <PortfolioPieChart data={currentAsset.list} valueDataKey="percentage" /> */}
-                {cardImg ? <img src={cardImg?.src} width="60px" alt="card" /> : ''}
+                {cardImg ? <img src={cardImg?.src} width="40px" alt="card" /> : ''}
               </GridItem>
 
               <GridItem area={'total'} placeItems="center" justifySelf={['center', 'unset']} fontSize={'24px'}>

@@ -289,7 +289,7 @@ function AppNavLayout({
         </Desktop>
 
         {/* wallet button */}
-        <Flex className="vWalletBtn" gap={[0.5, 2]} align="center" style={{ padding: '30px' }}>
+        <Flex className="vWalletBtn" align="center" style={{ padding: '30px' }}>
           {/* <PriorityButton />
           <SettingsMenu />
           <div
@@ -305,7 +305,7 @@ function AppNavLayout({
           </div>
           {!isMobile && <ColorThemeSettingFieldCustom />}
           <VersionedTransactionSwitch /> */}
-          <SolWallet />
+          <SolWallet title="" />
         </Flex>
       </HStack>
       {/* <Box

@@ -5,10 +5,10 @@ import useAllStandardPoolPosition from '@/hooks/portfolio/useAllStandardPoolPosi
 import Decimal from 'decimal.js'
 import { useTranslation } from 'react-i18next'
 import TokenInfoCard from './components/TokenInfoCard'
-import LiquidityImg from '../../../../../public/images/solana.png'
-import MarketcapImg from '../../../../../public/images/token-marketcap.png'
-import TotalsupplyImg from '../../../../../public/images/token-totalsupply.png'
-import VolumeImg from '../../../../../public/images/token-volume.png'
+import LiquidityImg from '../../../../../public/images/dashboard/solana.png'
+import MarketcapImg from '../../../../../public/images/dashboard/token-marketcap.png'
+import TotalsupplyImg from '../../../../../public/images/dashboard/token-totalsupply.png'
+import VolumeImg from '../../../../../public/images/dashboard/token-volume.png'
 import { useAppStore } from '@/store'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { getAccount, getAssociatedTokenAddress, AccountLayout } from '@solana/spl-token'
@@ -154,7 +154,7 @@ export default function SectionOverview() {
           mb="20"
         >
           <Flex>
-            <Flex direction="column" color="white" gap={2} pr="8" w="64%">
+            <Flex direction="column" color="white" gap={2} pr="8" w="66%">
               <Flex justifyContent="space-between">
                 <Text fontSize="lg" borderLeft="1px solid #E6C066" p="2" borderRadius="md">
                   <strong>Name:</strong> <span style={{ color: '#E6C066' }}>Official USA Token</span>
