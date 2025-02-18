@@ -21,30 +21,26 @@ const StatusSection: React.FC<StatusSectionProps> = ({ farms, title }) => {
           ⇅
         </Text>
       </Flex>
-      <Box
-        bg="#222222"
-        borderBottom="1px solid #E6C066"
-        py={4}
-        px="2"
-        pr="14"
-        borderRadius="md"
-        color="white"
-        fontFamily="monospace"
-        w="100%"
-      >
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} w="100%">
+      <Box bg="#222222" borderBottom="1px solid #E6C066" py={4} pr="6" borderRadius="md" color="white" fontFamily="monospace" w="100%">
+        <Flex w="100%">
           {farms.map((farm, index) => (
-            <Box key={index} p={6} borderRight="1px solid #E6C066" textAlign="center" w="100%">
-              <Text fontWeight="bold" fontSize="lg" color="white">
+            <Box
+              key={index}
+              py={6}
+              px={3}
+              fontSize={{ base: '6px', sm: 'xs', md: 'lg' }}
+              borderRight="1px solid #E6C066"
+              textAlign="center"
+              w="100%"
+            >
+              <Text fontWeight="bold" color="white">
                 {farm.name}
               </Text>
-              <Text fontSize="xl" fontWeight="bold">
-                {farm.apr}
-              </Text>
-              <Text fontSize="xl">APR</Text>
+              <Text fontWeight="bold">{farm.apr}</Text>
+              <Text>APR</Text>
             </Box>
           ))}
-        </Grid>
+        </Flex>
       </Box>
     </Box>
   )
