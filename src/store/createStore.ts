@@ -14,7 +14,7 @@ export const resetAllStore = (props?: { [key: string]: Record<string, any> }) =>
 
 declare type Get<T, K, F = never> = K extends keyof T ? T[K] : F
 
-type MiddleWares = [['zustand/devtools', never], ['zustand/immer', never]]
+type MiddleWares = [['zustand/devtools', any], ['zustand/immer', any]]
 const createStore = <T>(
   fn: (
     setState: Get<Mutate<StoreApi<T>, MiddleWares>, 'setState', undefined>,
@@ -26,7 +26,7 @@ const createStore = <T>(
 ) => {
   const store = create<T, MiddleWares>(
     devtools(
-      immer((set, get, store, $$storeMutations) => {
+      immer((set, get, store) => {
         // this function is to add log to redux dev tool
         const logSet: Get<Mutate<StoreApi<T>, MiddleWares>, 'setState', undefined> = (nextStateOrUpdater, shouldReplace, action) => {
           let objAct = action || {}
@@ -34,7 +34,10 @@ const createStore = <T>(
           return set(nextStateOrUpdater, shouldReplace, { ...(objAct || { type: 'unknown' }), payload: nextStateOrUpdater } as any)
         }
 
-        return fn(logSet, get, store, $$storeMutations)
+        return fn(logSet, get, store, [
+          ['zustand/devtools', undefined],
+          ['zustand/immer', undefined]
+        ])
 
         // maybe need while try to catch all tx
         // const storeState = fn(logSet, get, store, $$storeMutations)
