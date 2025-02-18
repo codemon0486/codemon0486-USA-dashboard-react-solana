@@ -136,7 +136,6 @@ function AppNavLayout({
       </Box> */}
 
       <HStack
-        className="navbar"
         flex="none"
         // px={['20px', '38px']}
         alignItems="center"
@@ -145,7 +144,6 @@ function AppNavLayout({
         background="#1A1A1A"
         zIndex={10}
         borderRight="1px solid #E6C066"
-        width={280}
       >
         {/* logo */}
         <Desktop>
@@ -166,7 +164,7 @@ function AppNavLayout({
             </Text>
           </Box>
         </Desktop>
-        <Mobile>
+        {/* <Mobile>
           <HStack>
             <RaydiumLogoOutline />
             <Text fontSize="xl" fontWeight="medium" color={colors.textSecondary}>
@@ -183,11 +181,11 @@ function AppNavLayout({
                 : ''}
             </Text>
           </HStack>
-        </Mobile>
+        </Mobile> */}
 
         {/* nav routes */}
         <Desktop>
-          <Flex>
+          <Flex mt="8">
             <Box px="2">
               <Image src="/images/sidebar/bar.png" h="83%" />
             </Box>
