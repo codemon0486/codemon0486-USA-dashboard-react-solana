@@ -357,11 +357,11 @@ function AppNavLayout({
           </Text>
         </Box>
       </Desktop> */}
-      <Mobile>
+      {/* <Mobile>
         <Box className="mobile_bottom_navbar" flex="none">
           <MobileBottomNavbar />
         </Box>
-      </Mobile>
+      </Mobile> */}
     </Flex>
   )
 }
