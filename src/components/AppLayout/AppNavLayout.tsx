@@ -142,6 +142,7 @@ function AppNavLayout({
         flex="none"
         // px={['20px', '38px']}
         alignItems="center"
+        h={'100vh'}
         justifyContent="space-between"
         flexDirection="column"
         background="#1A1A1A"

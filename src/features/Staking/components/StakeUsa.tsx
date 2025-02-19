@@ -95,8 +95,8 @@ export default function StakeUs() {
               justifyContent="space-between"
               borderRadius="20px"
             >
-              <InfoBox title="Staked Amount" value="0.00 USA" />
-              <InfoBox title="APR" value="3.7%" />
+              <InfoBox title="Staked Amount" value="0.76 USA" />
+              <InfoBox title="APR" value="25%" />
             </Box>
             <Box
               mt={{ base: '20px', sm: '20px' }}
