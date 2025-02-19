@@ -11,7 +11,13 @@ const StakeCard: React.FC<StakeCardProps> = ({ children, imageUrl }) => {
   return (
     <Box w={['full', '350px', '350px']} rounded={40} px={4} py={5} bg={'#222222'} border={'2px solid #E6C066'} borderBottom={'0px solid'}>
       <Box w={'full'} rounded={20} p={imageUrl ? 2 : 4} bg={'#1B1B1B'} borderBottom={'2px solid #E6C066'}>
-        {imageUrl ? <Image w={'full'} src={imageUrl} /> : <Box w={'full'} h={282} bg={'#222222'} rounded={10} />}
+        {imageUrl ? (
+          <Image w={'full'} src={imageUrl} />
+        ) : (
+          <Box w={'full'} textAlign={'center'} alignItems={'center'} h={282} bg={'#222222'} rounded={10} alignContent={'center'}>
+            <Text fontSize={'xl'}>Coming Soon</Text>
+          </Box>
+        )}
       </Box>
       <Box py={4} fontFamily={'Alexandria'}>
         <Flex justifyContent={'space-between'} py={1} px={5} mt={1} rounded={5} borderBottom="1px solid" borderBottomColor={'#ba9b53'}>

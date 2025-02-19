@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { Box, Button, HStack, Text, Image, useDisclosure, Flex } from '@chakra-ui/react'
 import { Wallet, useWallet } from '@solana/wallet-adapter-react'
 import { useWalletModal } from '@solana/wallet-adapter-react-ui'
@@ -12,6 +12,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { useTranslation } from 'react-i18next'
 import solwalletStyles from './solwallet.module.css'
 import { useRouter } from 'next/router'
+import { current } from 'immer'
 
 const SolWallet: React.FC = () => {
   const router = useRouter()
@@ -24,11 +25,63 @@ const SolWallet: React.FC = () => {
 
   const handleClose = useCallback(() => setVisible(false), [setVisible])
   const handleOpen = useCallback(() => setVisible(true), [setVisible])
-
+  const [showButton, setShowButton] = useState<boolean>(false)
   const handleSelectWallet = useEvent((wallet: Wallet) => {
     select(wallet.adapter.name)
     handleClose()
   })
+
+  const [currentWallet, setCurrentWallet] = useState<string>('solana')
+
+  const ButtonGroup: React.FC = () => {
+    return (
+      <Box
+        position={'absolute'}
+        top={'60px'}
+        right={'30px'}
+        zIndex={1}
+        border={'2px solid #E6C066'}
+        w={'300px'}
+        p={6}
+        rounded={'lg'}
+        bg={'#1b1b1b'}
+      >
+        <Button
+          w={'full'}
+          justifyContent={'space-between'}
+          bg={'#222222'}
+          px={10}
+          h={16}
+          display={'flex'}
+          borderBottom={'2px solid'}
+          borderColor={currentWallet === 'binance' ? '#2B1BBF' : '#e6c066'}
+          onClick={() => setCurrentWallet('binance')}
+        >
+          <Image src="/images/coin/binance.png" w={8} />
+          <Box>
+            <Text fontSize={'2xl'}>BINANCE</Text>
+            <Text fontSize={'md'}>SMART CHAIN</Text>
+          </Box>
+        </Button>
+        <Button
+          w={'full'}
+          justifyContent={'space-between'}
+          bg={'#222222'}
+          px={10}
+          h={16}
+          display={'flex'}
+          borderBottom={'2px solid'}
+          borderColor={currentWallet === 'solana' ? '#2B1BBF' : '#e6c066'}
+          onClick={() => setCurrentWallet('solana')}
+        >
+          <Image src="/images/coin/solana.png" w={8} />
+          <Text fontSize={'3xl'} ml={1}>
+            SOLANA
+          </Text>
+        </Button>
+      </Box>
+    )
+  }
 
   if (connected)
     return (
@@ -81,8 +134,11 @@ const SolWallet: React.FC = () => {
         ''
       )}
 
-      <Flex placeItems="center" gap={2}>
-        <Image src="/images/wallet/1.png" alt="img" w={{ base: '6', md: '8' }} />
+      <Flex placeItems="center" gap={2} position={'relative'}>
+        {showButton && <ButtonGroup />}
+
+        <Image src="/images/Down.png" cursor={'pointer'} alt="img" p={1} onClick={() => setShowButton(!showButton)} />
+        <Image src={`/images/coin/${currentWallet}.png`} alt="img" w={{ base: '6', md: '8' }} />
         <Image src="/images/wallet/2.png" alt="img" w={{ base: '6', md: '8' }} />
         <Button
           isLoading={connecting}
@@ -98,7 +154,6 @@ const SolWallet: React.FC = () => {
           {t('button.connect_wallet')}
         </Button>
       </Flex>
-
       <SelectWalletModal wallets={wallets} isOpen={visible} onClose={handleClose} onSelectWallet={handleSelectWallet} />
     </Flex>
   )
